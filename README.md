@@ -1,5 +1,7 @@
 Group D (Cross-Section)
 
+FITNESS APP:  App that tracks users' fitness activities, allows them to set goals, and provides insights into their progress.
+
 -Abhiraj Palliparambil Sanilkumar
 
 #features
