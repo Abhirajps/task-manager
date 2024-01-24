@@ -23,3 +23,17 @@ Group D (Cross-Section)
 3)Provide personalized workout recommendations based on users' goals, fitness level, and historical activity data.
 
 4)Allow integration with popular wearable devices
+
+-Ashwin Prakash
+
+#features
+
+1) Implement social features that allow users to share their achievements, workout summaries, or even compete with friends. 
+
+2) Include a feature to track users' daily nutrition, allowing them to log meals and monitor their calorie intake.
+Reminders and Notifications:
+
+3) Set up reminders for users to complete their workouts or reach specific milestones. Use push notifications to keep users engaged.
+
+
+4) Provide detailed insights into users' progress.
