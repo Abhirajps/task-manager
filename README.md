@@ -10,7 +10,7 @@ FITNESS APP:  App that tracks users' fitness activities, allows them to set goal
 
 2)Enable users to log jogging, walking, cycling, and other activities. 
 
-3)Permit users to create custom fitness objectives, including daily step counts, distance traveled, or calories burned. Provide options for immediate and long-term goals.
+3)Permit users to create custom fitness objectives, including daily step counts, distance traveled, or calories burned. 
 
 4)Provide a log for users to record precise exercises, session length, and activity intensity.
 
