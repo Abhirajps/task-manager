@@ -1,8 +1,10 @@
-Group D (Cross-Section)
+Group 18
 
-FITNESS APP:  App that tracks users' fitness activities, allows them to set goals, and provides insights into their progress.
+FITNESS APP:  App that tracks users' fitness activities, allows them to set goals.
 
 -Abhiraj Palliparambil Sanilkumar
+-Anand Krishna Shiju
+-Ashwin Prakash
 
 #features
 
@@ -12,30 +14,23 @@ FITNESS APP:  App that tracks users' fitness activities, allows them to set goal
 
 3)Permit users to create custom fitness objectives, including daily step counts, distance traveled, or calories burned. 
 
-4)Provide a log for users to record precise exercises, session length, and activity intensity.
-
--Anand Krishna Shiju
-
-#features
-
-1)Offer real-time feedback during workouts, such as distance covered, pace, and calories burned. 
-
-2)Create visually appealing charts and graphs to represent users' progress over time.
-
-3)Provide personalized workout recommendations based on users' goals, fitness level, and historical activity data.
-
-4)Allow integration with popular wearable devices
-
--Ashwin Prakash
-
-#features
-
-1) Implement social features that allow users to share their achievements, workout summaries, or even compete with friends. 
-
-2) Include a feature to track users' daily nutrition, allowing them to log meals and monitor their calorie intake.
-Reminders and Notifications:
-
-3) Set up reminders for users to complete their workouts or reach specific milestones. Use push notifications to keep users engaged.
+4)Provide a log for users to record precise exercises, session length.
 
 
-4) Provide detailed insights into users' progress.
+5)Allow users to log their daily water intake.
+
+6)Create visually appealing charts and graphs to represent users' progress over time.
+
+7)Provide a weekly summary that highlights key fitness achievements, encouraging users to stay consistent.
+
+8)Provide daily motivational quotes to boost users' spirits and encourage user.
+
+
+9) Implement social features that allow users to share their achievements, workout summaries, or even compete with friends. 
+
+10) Include a feature to track users' daily nutrition, allowing them to log meals and monitor their calorie intake.
+
+11) Set up reminders for users to complete their workouts.
+
+12) Allow user to provide a feedback .
+   Provide a way for users to contact support or ask questions.
