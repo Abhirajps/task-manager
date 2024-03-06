@@ -198,5 +198,32 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
     }
+    private fun recordWaterIntake(waterIntake: String) {
+        val userId = auth.currentUser?.uid
+        val userReference =
+            database.reference.child("water_intake").child(userId ?: "").child("water_intake")
+
+        val entryKey = userReference.push().key
+
+        val waterIntakeData = mapOf(
+            "water_intake" to waterIntake
+        )
+
+        userReference.child(entryKey ?: "").setValue(waterIntakeData)
+            .addOnSuccessListener {
+                Toast.makeText(
+                    this, "Water intake recorded successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                editTextWaterIntake.text.clear()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this, "Failed to record water intake. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
 
 }
