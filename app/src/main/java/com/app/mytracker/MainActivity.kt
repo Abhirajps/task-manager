@@ -171,9 +171,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun addToDatabase(food: String, calories: String) {
-        val userId = auth.currentUser?.uid
-        val userReference =
-            database.reference.child("daily_nutrition").child(userId ?: "").child("nutrition")
+        val user = auth.currentUser?.uid
+        val userReference = database.reference.child("daily_nutrition").child(user ?: "").child("nutrition")
 
         val entryKey = userReference.push().key
 
@@ -185,7 +184,7 @@ class MainActivity : AppCompatActivity() {
         userReference.child(entryKey ?: "").setValue(nutritionData)
             .addOnSuccessListener {
                 Toast.makeText(
-                    this, "Food entry added to database successfully",
+                    this, "Food entry added database successfully",
                     Toast.LENGTH_SHORT
                 ).show()
 
