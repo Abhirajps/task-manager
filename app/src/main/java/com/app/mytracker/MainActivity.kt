@@ -225,5 +225,23 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
     }
+        private fun fetchRandomQuote() {
+        firestore.collection("quotes").document("pmEXRDOgZeFPoaNFGTz0")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful && task.result != null) {
+                    val document = task.result
+                    if (document!!.exists()) {
+                        val quoteFields = document.data?.values?.toTypedArray()
+
+                        val random = Random()
+                        val randomIndex = random.nextInt(quoteFields?.size ?: 0)
+                        val randomQuote = quoteFields?.get(randomIndex).toString()
+
+                        textViewMotivationalQuote.text = randomQuote
+                    }
+                }
+            }
+    }
 
 }
