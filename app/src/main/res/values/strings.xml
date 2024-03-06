@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Task-manager</string>
+    <string name="app_name">My Tracker</string>
+    <string name="default_notification_channel_id">1435</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 </resources>

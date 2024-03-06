@@ -1,4 +1,4 @@
-package com.example.task_manager
+package com.app.mytracker
 
 import org.junit.Test
 

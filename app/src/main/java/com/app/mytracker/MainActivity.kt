@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -28,8 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var autoCompleteFood: AutoCompleteTextView
     private lateinit var editTextCalories: EditText
     private lateinit var editTextWaterIntake: EditText
-    private lateinit var timeEditText: EditText
-    private lateinit var activitySpinner: Spinner
     private lateinit var buttonAddToDatabase: Button
     private lateinit var buttonAddWaterDatabase: Button
     private lateinit var auth: FirebaseAuth
@@ -97,61 +94,10 @@ class MainActivity : AppCompatActivity() {
             scheduleReminders()
         }
 
-        setDailyActivityCard()
-
 
         fetchRandomQuote()
 
 
-    }
-
-    private fun setDailyActivityCard() {
-
-        val dailyActivities = arrayOf("Running", "Cycling", "Swimming", "Yoga", "Gym")
-
-        activitySpinner = findViewById(R.id.spinnerDailyActivities)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dailyActivities)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        activitySpinner.adapter = adapter
-
-        timeEditText = findViewById(R.id.editTextActivityTime)
-
-        val recordButton: Button = findViewById(R.id.buttonRecordActivity)
-        recordButton.setOnClickListener {
-            val selectedActivity = activitySpinner.selectedItem.toString()
-            val enteredTime = timeEditText.text.toString()
-
-            recordActivity(selectedActivity,enteredTime)
-        }
-    }
-
-    private fun recordActivity(activity: String, time: String) {
-        val userId = auth.currentUser?.uid
-        val userReference = database.reference.child("daily_activities").child(userId ?: "")
-
-        val entryKey = userReference.push().key
-
-        val activityData = mapOf(
-            "activity" to activity,
-            "time" to time
-        )
-
-        userReference.child(entryKey ?: "").setValue(activityData)
-            .addOnSuccessListener {
-                Toast.makeText(
-                    this, "Activity entry added to database successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                activitySpinner.setSelection(0)
-                timeEditText.text.clear()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(
-                    this, "Failed to add activity entry to database. ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
