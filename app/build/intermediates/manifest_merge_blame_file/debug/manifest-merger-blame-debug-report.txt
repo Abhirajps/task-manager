@@ -9,11 +9,11 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-11-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:5:5-77
-11-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:5:22-74
+11-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:5:5-77
+11-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:5:22-74
 12    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-12-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:6:5-79
-12-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:6:22-76
+12-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:6:22-76
 13    <uses-permission android:name="android.permission.INTERNET" />
 13-->[com.google.firebase:firebase-auth:22.3.1] /Users/anandkrishnashiju/.gradle/caches/transforms-3/5a84e7e0fea7c09209b38957cd2b65f0/transformed/firebase-auth-22.3.1/AndroidManifest.xml:25:5-67
 13-->[com.google.firebase:firebase-auth:22.3.1] /Users/anandkrishnashiju/.gradle/caches/transforms-3/5a84e7e0fea7c09209b38957cd2b65f0/transformed/firebase-auth-22.3.1/AndroidManifest.xml:25:22-64
@@ -36,79 +36,79 @@
 21-->[androidx.core:core:1.12.0] /Users/anandkrishnashiju/.gradle/caches/transforms-3/5ed153b164191934a1176b76771d2109/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
 22
 23    <application
-23-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:8:5-45:19
+23-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:8:5-45:19
 24        android:allowBackup="true"
-24-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:9:9-35
+24-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:9:9-35
 25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 25-->[androidx.core:core:1.12.0] /Users/anandkrishnashiju/.gradle/caches/transforms-3/5ed153b164191934a1176b76771d2109/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 26        android:dataExtractionRules="@xml/data_extraction_rules"
-26-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:10:9-65
+26-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:10:9-65
 27        android:debuggable="true"
 28        android:extractNativeLibs="false"
 29        android:fullBackupContent="@xml/backup_rules"
-29-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:11:9-54
+29-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:11:9-54
 30        android:icon="@mipmap/ic_launcher"
-30-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:12:9-43
+30-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:12:9-43
 31        android:label="@string/app_name"
-31-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:13:9-41
+31-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:13:9-41
 32        android:roundIcon="@mipmap/ic_launcher_round"
-32-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:14:9-54
+32-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:14:9-54
 33        android:supportsRtl="true"
-33-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:15:9-35
+33-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:15:9-35
 34        android:testOnly="true"
 35        android:theme="@style/Theme.MyTracker" >
-35-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:16:9-47
+35-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:16:9-47
 36        <activity
-36-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:18:9-20:39
+36-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:18:9-20:39
 37            android:name="com.app.mytracker.ChartActivity"
-37-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:19:13-42
+37-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:19:13-42
 38            android:exported="true" />
-38-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:20:13-36
+38-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:20:13-36
 39        <activity
-39-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:21:9-23:40
+39-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:21:9-23:40
 40            android:name="com.app.mytracker.RegistrationActivity"
-40-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:22:13-49
+40-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:22:13-49
 41            android:exported="false" />
-41-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:23:13-37
+41-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:23:13-37
 42        <activity
-42-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:24:9-32:20
+42-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:24:9-32:20
 43            android:name="com.app.mytracker.LoginActivity"
-43-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:25:13-42
+43-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:25:13-42
 44            android:exported="true" >
-44-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:26:13-36
+44-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:26:13-36
 45            <intent-filter>
-45-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:27:13-31:29
+45-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:27:13-31:29
 46                <action android:name="android.intent.action.MAIN" />
-46-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:28:17-69
-46-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:28:25-66
+46-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:28:17-69
+46-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:28:25-66
 47
 48                <category android:name="android.intent.category.LAUNCHER" />
-48-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:30:17-77
-48-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:30:27-74
+48-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:30:17-77
+48-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:30:27-74
 49            </intent-filter>
 50        </activity>
 51        <activity
-51-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:33:9-35:40
+51-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:33:9-35:40
 52            android:name="com.app.mytracker.MainActivity"
-52-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:34:13-41
+52-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:34:13-41
 53            android:exported="false" />
-53-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:35:13-37
+53-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:35:13-37
 54
 55        <receiver
-55-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:37:9-40:40
+55-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:37:9-40:40
 56            android:name="com.app.mytracker.NotificationReceiver"
-56-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:38:13-49
+56-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:38:13-49
 57            android:enabled="true"
-57-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:39:13-35
+57-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:39:13-35
 58            android:exported="false" />
-58-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:40:13-37
+58-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:40:13-37
 59
 60        <meta-data
-60-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:42:9-44:71
+60-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:42:9-44:71
 61            android:name="com.google.firebase.messaging.default_notification_channel_id"
-61-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:43:13-89
+61-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:43:13-89
 62            android:value="@string/default_notification_channel_id" />
-62-->/Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/AndroidManifest.xml:44:13-68
+62-->/Users/anandkrishnashiju/Documents/Task_manager/app/src/main/AndroidManifest.xml:44:13-68
 63
 64        <activity
 64-->[com.google.firebase:firebase-auth:22.3.1] /Users/anandkrishnashiju/.gradle/caches/transforms-3/5a84e7e0fea7c09209b38957cd2b65f0/transformed/firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20

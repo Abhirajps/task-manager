@@ -30,11 +30,11 @@ com.app.mytracker.app-profileinstaller-1.3.0-28 /Users/anandkrishnashiju/.gradle
 com.app.mytracker.app-play-services-basement-18.3.0-29 /Users/anandkrishnashiju/.gradle/caches/transforms-3/cc13c22c97c6fa65b25d3e8ec59fdbed/transformed/play-services-basement-18.3.0/res
 com.app.mytracker.app-viewpager2-1.0.0-30 /Users/anandkrishnashiju/.gradle/caches/transforms-3/d96d18f48e41cebe9f03d4dbfe28036a/transformed/viewpager2-1.0.0/res
 com.app.mytracker.app-lifecycle-runtime-2.6.1-31 /Users/anandkrishnashiju/.gradle/caches/transforms-3/e915bf076c577be70c36929c21ebd95b/transformed/lifecycle-runtime-2.6.1/res
-com.app.mytracker.app-pngs-32 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/generated/res/pngs/debug
-com.app.mytracker.app-res-33 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/generated/res/processDebugGoogleServices
-com.app.mytracker.app-resValues-34 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/generated/res/resValues/debug
-com.app.mytracker.app-packageDebugResources-35 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.app.mytracker.app-packageDebugResources-36 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.app.mytracker.app-merged_res-37 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/build/intermediates/merged_res/debug
-com.app.mytracker.app-debug-38 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/debug/res
-com.app.mytracker.app-main-39 /Users/anandkrishnashiju/Downloads/MyTracker 2/app/src/main/res
+com.app.mytracker.app-pngs-32 /Users/anandkrishnashiju/Documents/Task_manager/app/build/generated/res/pngs/debug
+com.app.mytracker.app-res-33 /Users/anandkrishnashiju/Documents/Task_manager/app/build/generated/res/processDebugGoogleServices
+com.app.mytracker.app-resValues-34 /Users/anandkrishnashiju/Documents/Task_manager/app/build/generated/res/resValues/debug
+com.app.mytracker.app-packageDebugResources-35 /Users/anandkrishnashiju/Documents/Task_manager/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.app.mytracker.app-packageDebugResources-36 /Users/anandkrishnashiju/Documents/Task_manager/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.app.mytracker.app-merged_res-37 /Users/anandkrishnashiju/Documents/Task_manager/app/build/intermediates/merged_res/debug
+com.app.mytracker.app-debug-38 /Users/anandkrishnashiju/Documents/Task_manager/app/src/debug/res
+com.app.mytracker.app-main-39 /Users/anandkrishnashiju/Documents/Task_manager/app/src/main/res
