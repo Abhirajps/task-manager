@@ -21,8 +21,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="6dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +51,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="16dp"
         app:cardElevation="6dp">
 
         <LinearLayout
@@ -63,78 +63,267 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Daily nutrition"
-                android:textSize="14sp"
+                android:text="Your Weekly report"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteFood"
-                android:layout_width="match_parent"
+            <TextSwitcher
+                android:id="@+id/textSwitcher"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewHeading"
-                android:hint="Type your food"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/editTextCalories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/autoCompleteFood"
-                android:layout_marginTop="8dp"
-                android:hint="Calories"
-                android:inputType="number" />
-
-            <Button
-                android:id="@+id/buttonAddToDatabase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/editTextCalories"
-                android:layout_marginTop="16dp"
-                android:text="Record food" />
+                android:layout_marginTop="15dp"
+                android:textSize="16sp" />
 
         </LinearLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardElevation="6dp">
+        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Water Intake"
-                android:textSize="14sp"
-                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextWaterIntake"
+
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Enter water intake (ml)"
-                android:inputType="number" />
+                android:layout_marginTop="30dp"
+                app:cardElevation="6dp">
 
-            <Button
-                android:id="@+id/buttonRecordIntake"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Daily nutrition"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteFood"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textViewHeading"
+                        android:hint="Type your food"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/editTextCalories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/autoCompleteFood"
+                        android:layout_marginTop="8dp"
+                        android:hint="Calories"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/buttonAddToDatabase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/editTextCalories"
+                        android:layout_marginTop="16dp"
+                        android:text="Record food" />
+
+                    <TextView
+                        android:id="@+id/nutritionProgressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily report"
+                        android:textStyle="italic|bold"
+                        android:gravity="center"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="10dp"
+                        app:drawableStartCompat="@drawable/ic_graph" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Record water" />
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Water Intake"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextWaterIntake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Enter water intake (ml)"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/buttonRecordIntake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Record water" />
+
+                    <TextView
+                        android:id="@+id/waterProgressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily report"
+                        android:textStyle="italic|bold"
+                        android:gravity="center"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="10dp"
+                        app:drawableStartCompat="@drawable/ic_graph" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Daily Activities"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerDailyActivities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp" />
+
+                    <EditText
+                        android:id="@+id/editTextActivityTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Enter time (in minutes)"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/buttonRecordActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Record activity" />
+
+                    <TextView
+                        android:id="@+id/activityProgressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily report"
+                        android:textStyle="italic|bold"
+                        android:gravity="center"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="10dp"
+                        app:drawableStartCompat="@drawable/ic_graph" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Exercise Record"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerExerciseType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp" />
+
+                    <EditText
+                        android:id="@+id/editTextSessionLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Enter session length (in minutes)"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/editTextExerciseNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Additional notes (optional)"
+                        android:inputType="textMultiLine" />
+
+                    <Button
+                        android:id="@+id/buttonRecordExercise"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Record Exercise" />
+
+                    <TextView
+                        android:id="@+id/exerciseProgressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily report"
+                        android:textStyle="italic|bold"
+                        android:gravity="center"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="10dp"
+                        app:drawableStartCompat="@drawable/ic_graph" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
+
+    </ScrollView>
 
 </LinearLayout>
