@@ -86,37 +86,33 @@ class NotificationService {
         val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val requestCodeKey = "notification_request_code"
 
-        // Check if notification is already scheduled
         val requestCode = sharedPreferences.getInt(requestCodeKey, -1)
         if (requestCode == -1 || !isAlarmScheduled(context, requestCode)) {
-            // Notification is not scheduled or the scheduled one is not found, so schedule it
+
             val newRequestCode = generateUniqueRequestCode()
 
-            // Schedule the notification using the newRequestCode
             scheduleNotification(context, newRequestCode)
 
-            // Save the newRequestCode to SharedPreferences
             with(sharedPreferences.edit()) {
                 putInt(requestCodeKey, newRequestCode)
                 apply()
             }
         } else {
-            // Notification is already scheduled with the existing requestCode
-            // Handle the case accordingly
+
+
         }
     }
 
     private fun scheduleNotification(context: Context, requestCode: Int) {
-        // Schedule your notification here using the provided requestCode
-        // ... (your existing notification scheduling logic)
 
-        // For example, you can use the existing scheduleNotification function
-        // notificationService.scheduleNotification(context, time)
+
+
+
     }
 
     private fun generateUniqueRequestCode(): Int {
-        // You may implement your own logic to generate a unique requestCode
-        // For simplicity, you can use the current timestamp as the requestCode
+
+
         return System.currentTimeMillis().toInt()
     }
 

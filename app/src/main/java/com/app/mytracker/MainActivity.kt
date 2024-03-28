@@ -125,7 +125,23 @@ class MainActivity : AppCompatActivity() {
         buttonAddExerciseToDb = findViewById(R.id.buttonRecordExercise)
 
         setupExerciseSpinner()
-        
+
+
+        setUpProgress()
+
+        lifecycleScope.launch {
+            val today = Date()
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val formattedToday = dateFormat.format(today)
+            val weekStart = dateFormat.parse(formattedToday)!!
+            val aggregateUserDataForWeek = UserDataAggregator().aggregateUserDataForWeek(weekStart)
+            aggregateUserDataForWeek.forEach { data ->
+                Log.d("UserData", data)
+            }
+
+            setUpTextSwitcher(aggregateUserDataForWeek)
+
+        }
 
 
     }
@@ -165,6 +181,35 @@ class MainActivity : AppCompatActivity() {
         textSwitcher.setOnClickListener{
             currentIndex = (currentIndex + 1) % aggregateUserDataForWeek.size
             textSwitcher.setText(aggregateUserDataForWeek[currentIndex])
+        }
+    }
+
+    private fun setUpProgress() {
+        val foodProgress = findViewById<TextView>(R.id.nutritionProgressTv)
+        val waterProgressTv = findViewById<TextView>(R.id.waterProgressTv)
+        val activityProgressTv = findViewById<TextView>(R.id.activityProgressTv)
+        val exerciseProgressTv = findViewById<TextView>(R.id.exerciseProgressTv)
+
+
+        foodProgress.setOnClickListener{
+            val intent = Intent(this,ChartActivity::class.java)
+            intent.putExtra("data","daily_nutrition")
+            startActivity(intent)
+        }
+        waterProgressTv.setOnClickListener{
+            val intent = Intent(this,ChartActivity::class.java)
+            intent.putExtra("data","water_intake")
+            startActivity(intent)
+        }
+        activityProgressTv.setOnClickListener{
+            val intent = Intent(this,ChartActivity::class.java)
+            intent.putExtra("data","daily_activities")
+            startActivity(intent)
+        }
+        exerciseProgressTv.setOnClickListener{
+            val intent = Intent(this,ChartActivity::class.java)
+            intent.putExtra("data","exercise_sessions")
+            startActivity(intent)
         }
     }
 

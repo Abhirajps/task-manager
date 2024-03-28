@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.app.mytracker.app-mergeDebugResources-34:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.app.mytracker.app-mergeDebugResources-35:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/Users/abhitho/.gradle/caches/transforms-3/c24a31c7a6b8cb759962de409f2ad345/transformed/material-1.11.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/Users/anandkrishnashiju/.gradle/caches/transforms-3/c24a31c7a6b8cb759962de409f2ad345/transformed/material-1.11.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
