@@ -8,14 +8,32 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewHeading"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="My Tracker"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        >
+
+        <TextView
+            android:id="@+id/textViewHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="My Tracker"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/myObjectivesIv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_profile"
+            app:tint="@color/white"/>
+
+    </LinearLayout>
+
+
 
 
     <com.google.android.material.card.MaterialCardView

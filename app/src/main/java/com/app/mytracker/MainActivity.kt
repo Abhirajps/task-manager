@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextSwitcher
 import android.widget.TextView
@@ -30,7 +31,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextWaterIntake: EditText
     private lateinit var timeEditText: EditText
     private lateinit var activitySpinner: Spinner
+    private lateinit var textSwitcher: TextSwitcher
     private lateinit var buttonAddToDatabase: Button
     private lateinit var buttonAddWaterDatabase: Button
     private lateinit var buttonAddExerciseToDb: Button
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var spinnerExercise: Spinner
     private lateinit var editTextSessionLength: EditText
+    private var dataUpdateJob: Job? = null
 
 
     private val PREF_NAME = "ReminderPrefs"
@@ -68,12 +73,23 @@ class MainActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
+        textSwitcher = findViewById(R.id.textSwitcher)
         textViewMotivationalQuote = findViewById(R.id.textViewMotivationalQuote)
         autoCompleteFood = findViewById(R.id.autoCompleteFood)
         editTextCalories = findViewById(R.id.editTextCalories)
         buttonAddToDatabase = findViewById(R.id.buttonAddToDatabase)
         buttonAddWaterDatabase = findViewById(R.id.buttonRecordIntake)
         editTextWaterIntake = findViewById(R.id.editTextWaterIntake)
+
+
+
+
+        textSwitcher.setFactory {
+            TextView(this).apply {
+                gravity = Gravity.CENTER
+                textSize = 16f
+            }
+        }
 
         val foodSuggestions = arrayOf("Apple", "Banana", "Chicken", "Salad", "Pasta")
         val adapter =
@@ -129,6 +145,12 @@ class MainActivity : AppCompatActivity() {
 
         setUpProgress()
 
+        updateWeeklyReport()
+
+
+    }
+
+    private fun updateWeeklyReport() {
         lifecycleScope.launch {
             val today = Date()
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -142,34 +164,18 @@ class MainActivity : AppCompatActivity() {
             setUpTextSwitcher(aggregateUserDataForWeek)
 
         }
-
-
     }
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun setUpTextSwitcher(aggregateUserDataForWeek: List<String>) {
+        var currentIndex = 0
 
-        var  currentIndex = 0
-        val  textSwitcher:TextSwitcher = findViewById(R.id.textSwitcher)
+        // Cancel the previous job if it exists
+        dataUpdateJob?.cancel()
 
 
-        textSwitcher.setFactory {
-            val textView = TextView(this)
-            textView.gravity = Gravity.CENTER
-            textView.textSize = 16f
-
-            textView
-        }
-
-        val inAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
-        val outAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_out)
-        textSwitcher.inAnimation = inAnimation
-        textSwitcher.outAnimation = outAnimation
-
-        textSwitcher.setText(aggregateUserDataForWeek[currentIndex])
-
-        GlobalScope.launch {
-            while (true) {
+        dataUpdateJob = lifecycleScope.launch {
+            while (isActive) {
                 delay(4000)
                 currentIndex = (currentIndex + 1) % aggregateUserDataForWeek.size
                 withContext(Dispatchers.Main) {
@@ -178,7 +184,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        textSwitcher.setOnClickListener{
+        textSwitcher.setOnClickListener {
             currentIndex = (currentIndex + 1) % aggregateUserDataForWeek.size
             textSwitcher.setText(aggregateUserDataForWeek[currentIndex])
         }
@@ -273,6 +279,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Activity entry added to database successfully", Toast.LENGTH_SHORT).show()
                 activitySpinner.setSelection(0)
                 timeEditText.text.clear()
+                updateWeeklyReport()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to add activity entry to database. ${e.message}",
@@ -371,6 +378,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Food entry added to database successfully", Toast.LENGTH_SHORT).show()
                 autoCompleteFood.text.clear()
                 editTextCalories.text.clear()
+                updateWeeklyReport()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to add food entry to database. ${e.message}", Toast.LENGTH_SHORT).show()
@@ -397,6 +405,7 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Toast.makeText(this, "Water intake recorded successfully", Toast.LENGTH_SHORT).show()
                 editTextWaterIntake.text.clear()
+                updateWeeklyReport()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to record water intake. ${e.message}", Toast.LENGTH_SHORT).show()
@@ -426,6 +435,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Exercise session added to database successfully.", Toast.LENGTH_SHORT).show()
                 activitySpinner.setSelection(0)
                 timeEditText.text.clear()
+                updateWeeklyReport()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to add exercise session to database. ${e.message}", Toast.LENGTH_SHORT).show()
