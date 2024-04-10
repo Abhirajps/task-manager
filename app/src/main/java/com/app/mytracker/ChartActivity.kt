@@ -1,19 +1,14 @@
 package com.app.mytracker
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.DataEntry
@@ -27,9 +22,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 
 class ChartActivity : AppCompatActivity() {
 
@@ -73,12 +65,6 @@ class ChartActivity : AppCompatActivity() {
             } else {
                 recordActivity()
             }
-        }
-
-        val share:ImageView = findViewById(R.id.shareChart)
-
-        share.setOnClickListener{
-            shareScreen()
         }
     }
 
@@ -323,56 +309,6 @@ class ChartActivity : AppCompatActivity() {
         anyChartView.setChart(pie)
     }
 
-
-
-    private fun shareScreen() {
-        // Take a screenshot of the current view
-        val screenshotBitmap = takeScreenshot()
-
-        // Save the screenshot to a file
-        val screenshotFile = saveScreenshot(screenshotBitmap)
-
-        screenshotFile?.let {
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "image/*"
-
-                // Using FileProvider to get a content URI
-                val contentUri: Uri = FileProvider.getUriForFile(this@ChartActivity, "${applicationContext.packageName}.provider", it)
-                putExtra(Intent.EXTRA_STREAM, contentUri)
-                putExtra(Intent.EXTRA_TEXT,"My ${intent.getStringExtra("data")?.replace("_"," ")} progress")
-                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            }
-            startActivity(Intent.createChooser(shareIntent, "My ${intent.getStringExtra("data")?.replace("_"," ")} progress"))
-        }
-    }
-
-    private fun takeScreenshot(): Bitmap {
-        val rootView: View = window.decorView.rootView
-        rootView.isDrawingCacheEnabled = true
-        val screenshot = Bitmap.createBitmap(rootView.drawingCache)
-        rootView.isDrawingCacheEnabled = false
-        return screenshot
-    }
-
-    private fun saveScreenshot(bitmap: Bitmap): File? {
-        val fileDir = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "Screenshots")
-        if (!fileDir.exists()) {
-            fileDir.mkdirs()
-        }
-        val screenshotFile = File(fileDir, "screenshot_${System.currentTimeMillis()}.png")
-
-        return try {
-            FileOutputStream(screenshotFile).use { out ->
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
-            }
-            screenshotFile
-        } catch (e: IOException) {
-            e.printStackTrace()
-            null
-        }
-    }
-
 }
-
 
 data class NutritionEntry(val food: String, val calories: String)
