@@ -6,20 +6,20 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.Gravity
-import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Spinner
 import android.widget.TextSwitcher
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -30,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -139,6 +138,11 @@ class MainActivity : AppCompatActivity() {
         spinnerExercise = findViewById(R.id.spinnerExerciseType)
         editTextSessionLength = findViewById(R.id.editTextSessionLength)
         buttonAddExerciseToDb = findViewById(R.id.buttonRecordExercise)
+        val menu: ImageView = findViewById(R.id.menuIv)
+
+        menu.setOnClickListener {
+            showPopupMenu(it)
+        }
 
         setupExerciseSpinner()
 
@@ -149,6 +153,69 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
+    private fun showPopupMenu(view: android.view.View) {
+        val popupMenu = PopupMenu(this, view)
+        popupMenu.inflate(R.menu.popup_menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.feedbackMenu -> {
+                    showInputDialog()
+                    true
+                }
+
+                R.id.logout->{
+                    FirebaseAuth.getInstance().signOut()
+                    finish()
+                    startActivity(Intent(this@MainActivity,LoginActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popupMenu.show()
+    }
+
+    private fun showInputDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Enter your feedback")
+
+        val input = EditText(this)
+        builder.setView(input)
+
+        builder.setPositiveButton("Submit") { dialog, which ->
+            val enteredText = input.text.toString()
+            if (enteredText.isNotEmpty()) {
+                addToFirebase(enteredText)
+            }
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, which ->
+            dialog.cancel()
+        }
+
+        builder.show()
+    }
+
+    private fun addToFirebase(enteredText: String) {
+        val userId = auth.currentUser?.uid ?: return
+
+        val feedbacksRef = database.reference.child("feedbacks").child(userId)
+        feedbacksRef.child(System.currentTimeMillis().toString()).setValue(enteredText)
+            .addOnSuccessListener {
+                showToast(" Thankyou for your feedback")
+            }
+            .addOnFailureListener { e ->
+                showToast(" Failed to add feedback : ${e.message}")
+            }
+    }
+
+    private fun showToast(s: String) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+    }
+
 
     private fun updateWeeklyReport() {
         lifecycleScope.launch {
@@ -197,24 +264,24 @@ class MainActivity : AppCompatActivity() {
         val exerciseProgressTv = findViewById<TextView>(R.id.exerciseProgressTv)
 
 
-        foodProgress.setOnClickListener{
-            val intent = Intent(this,ChartActivity::class.java)
-            intent.putExtra("data","daily_nutrition")
+        foodProgress.setOnClickListener {
+            val intent = Intent(this, ChartActivity::class.java)
+            intent.putExtra("data", "daily_nutrition")
             startActivity(intent)
         }
-        waterProgressTv.setOnClickListener{
-            val intent = Intent(this,ChartActivity::class.java)
-            intent.putExtra("data","water_intake")
+        waterProgressTv.setOnClickListener {
+            val intent = Intent(this, ChartActivity::class.java)
+            intent.putExtra("data", "water_intake")
             startActivity(intent)
         }
-        activityProgressTv.setOnClickListener{
-            val intent = Intent(this,ChartActivity::class.java)
-            intent.putExtra("data","daily_activities")
+        activityProgressTv.setOnClickListener {
+            val intent = Intent(this, ChartActivity::class.java)
+            intent.putExtra("data", "daily_activities")
             startActivity(intent)
         }
-        exerciseProgressTv.setOnClickListener{
-            val intent = Intent(this,ChartActivity::class.java)
-            intent.putExtra("data","exercise_sessions")
+        exerciseProgressTv.setOnClickListener {
+            val intent = Intent(this, ChartActivity::class.java)
+            intent.putExtra("data", "exercise_sessions")
             startActivity(intent)
         }
     }
@@ -232,7 +299,7 @@ class MainActivity : AppCompatActivity() {
             val exercise = spinnerExercise.selectedItem.toString()
             val sessionLength = editTextSessionLength.text.toString()
 
-            recordExerciseSession(exercise,sessionLength)
+            recordExerciseSession(exercise, sessionLength)
         }
     }
 
@@ -252,7 +319,7 @@ class MainActivity : AppCompatActivity() {
             val selectedActivity = activitySpinner.selectedItem.toString()
             val enteredTime = timeEditText.text.toString()
 
-            recordActivity(selectedActivity,enteredTime)
+            recordActivity(selectedActivity, enteredTime)
         }
     }
 
@@ -276,14 +343,20 @@ class MainActivity : AppCompatActivity() {
 
         dateReference.child(entryKey).setValue(activityData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Activity entry added to database successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Activity entry added to database successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
                 activitySpinner.setSelection(0)
                 timeEditText.text.clear()
                 updateWeeklyReport()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to add activity entry to database. ${e.message}",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Failed to add activity entry to database. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
@@ -375,13 +448,21 @@ class MainActivity : AppCompatActivity() {
 
         dateReference.child(entryKey).setValue(nutritionData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Food entry added to database successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Food entry added to database successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
                 autoCompleteFood.text.clear()
                 editTextCalories.text.clear()
                 updateWeeklyReport()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to add food entry to database. ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Failed to add food entry to database. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
@@ -403,12 +484,17 @@ class MainActivity : AppCompatActivity() {
 
         dayReference.child(entryKey).setValue(waterIntakeData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Water intake recorded successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Water intake recorded successfully", Toast.LENGTH_SHORT)
+                    .show()
                 editTextWaterIntake.text.clear()
                 updateWeeklyReport()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to record water intake. ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Failed to record water intake. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
@@ -432,13 +518,21 @@ class MainActivity : AppCompatActivity() {
 
         exerciseSessionReference.child(sessionKey).setValue(exerciseSessionData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Exercise session added to database successfully.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Exercise session added to database successfully.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 activitySpinner.setSelection(0)
                 timeEditText.text.clear()
                 updateWeeklyReport()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to add exercise session to database. ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Failed to add exercise session to database. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 

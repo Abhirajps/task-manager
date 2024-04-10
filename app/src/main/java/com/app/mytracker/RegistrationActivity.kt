@@ -16,6 +16,12 @@ import java.util.Calendar
 
 class RegistrationActivity : AppCompatActivity() {
 
+    private lateinit var registerButton: Button
+    private lateinit var nameEditText: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var dobEditText: EditText
+    private lateinit var sexSpinner: Spinner
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
 
@@ -30,12 +36,12 @@ class RegistrationActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
 
-        val nameEditText: EditText = findViewById(R.id.nameEditText)
-        val emailEditText: EditText = findViewById(R.id.emailEditTextRegistration)
-        val passwordEditText: EditText = findViewById(R.id.passwordEditTextRegistration)
-        val dobEditText: EditText = findViewById(R.id.dobEditText)
-        val sexSpinner: Spinner = findViewById(R.id.sexSpinner)
-        val registerButton: Button = findViewById(R.id.registerButton)
+        nameEditText = findViewById(R.id.nameEditText)
+        emailEditText = findViewById(R.id.emailEditTextRegistration)
+        passwordEditText = findViewById(R.id.passwordEditTextRegistration)
+        dobEditText = findViewById(R.id.dobEditText)
+        sexSpinner = findViewById(R.id.sexSpinner)
+        registerButton = findViewById(R.id.registerButton)
 
 
 
@@ -62,13 +68,15 @@ class RegistrationActivity : AppCompatActivity() {
         sexSpinner.adapter = sexAdapter
 
         registerButton.setOnClickListener {
-            val name = nameEditText.text.toString()
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
-            val dob = dobEditText.text.toString()
-            val sex = sexSpinner.selectedItem.toString()
+            if (validateInputs()) {
+                val name = nameEditText.text.toString()
+                val email = emailEditText.text.toString()
+                val password = passwordEditText.text.toString()
+                val dob = dobEditText.text.toString()
+                val sex = sexSpinner.selectedItem.toString()
 
-            registerUser(name, email, password, dob, sex)
+                registerUser(name, email, password, dob, sex)
+            }
         }
 
     }
@@ -109,6 +117,43 @@ class RegistrationActivity : AppCompatActivity() {
                 ).show()
             }
     }
+
+
+    fun validateInputs(): Boolean {
+
+        if (nameEditText.text.toString().trim().isEmpty()) {
+            showToast("Please enter your name")
+            return false
+        }
+
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        if (emailEditText.text.toString().trim().isEmpty()) {
+            showToast("Please enter your email")
+            return false
+        } else if (!emailEditText.text.toString().trim().matches(emailPattern.toRegex())) {
+            showToast("Invalid email address")
+            return false
+        }
+
+        if (passwordEditText.text.toString().trim().isEmpty()) {
+            showToast("Please enter your password")
+            return false
+        }
+
+        if (dobEditText.text.toString().trim().isEmpty()) {
+            showToast("Please enter your date of birth")
+            return false
+        }
+
+        return true
+    }
+
+    // Helper function to show toast messages
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        // Use getContext() instead of this if you are in a Fragment
+    }
+
 
     data class UserDetails(val name: String, val dob: String, val sex: String, val email: String)
 

@@ -38,10 +38,10 @@
         android:id="@+id/dobEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passwordEditTextRegistration"
         android:layout_marginBottom="8dp"
         android:hint="Date of Birth"
-        android:inputType="date" />
+        android:focusable="false"
+        android:inputType="none" />
 
     <Spinner
         android:id="@+id/sexSpinner"

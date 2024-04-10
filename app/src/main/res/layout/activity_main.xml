@@ -24,11 +24,11 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/myObjectivesIv"
+            android:id="@+id/menuIv"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_profile"
+            android:src="@drawable/ic_menu"
             app:tint="@color/white"/>
 
     </LinearLayout>
